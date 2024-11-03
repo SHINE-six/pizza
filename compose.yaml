@@ -1,0 +1,66 @@
+services:
+  api_gateway:
+    image: api_gateway
+    ports:
+      - 8080:8080
+   
+  user_service-backend:
+    image: user_service
+    environment:
+      - POSTGRES_DATABASE_URL=postgres://postgres:Wisdom_100@postgres:5432/postgres?sslmode=disable
+    ports:
+      - 50051:50051
+
+  customer-frontend:
+    image: customer-frontend
+    build: 
+      context: ./Frontend/Customer_Frontend/customer-frontend
+      dockerfile: Dockerfile
+      args:
+        - WS_WEBSOCKET_URL=ws://localhost:8081
+        - API_GATEWAY=http://localhost:8080
+    environment:
+      NODE_ENV: production
+      WS_WEBSOCKET_URL: ws://localhost:8081
+      API_GATEWAY: http://localhost:8080
+    ports:
+      - 3000:3000
+    
+  delivery-frontend:
+    image: delivery-frontend
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3001:3001
+
+  delivery_service-backend:
+    image: delivery_service
+    ports:
+      - 8081:8081
+  
+  notification_service-backend:
+    image: notification_service
+  
+  order_service-backend:
+    image: order_service
+    ports:
+      - 10072:10072
+ 
+  menu_service-backend:
+    image: menu_service
+    ports:
+      - 10071:10071
+
+  graphql_gateway:
+    image: graphql_gateway
+    ports:
+      - 10070:10070
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Wisdom_100
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"

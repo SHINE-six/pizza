@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package user;
+
+// Specify the Go package where the generated files will be placed.
+option go_package = ".";
+
+service UserService {
+    rpc AuthUser (AuthCredential) returns (Empty) {};
+    rpc CreateUser (Credential) returns (Empty) {};
+    rpc VerifyUser (VerifyCredential) returns (Empty) {};
+    rpc VerifyStaff (EmailCredential) returns (StaffCredential) {};
+}
+
+message Empty {}
+
+message Credential {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message AuthCredential {
+    string email = 1;
+    string password = 2;
+}
+
+message VerifyCredential {
+    string email = 1;
+    string token = 2;
+}
+
+message EmailCredential {
+    string email = 1;
+}
+
+message StaffCredential {
+    string staffID = 1;
+    string staffName = 2;
+}

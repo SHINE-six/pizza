@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Created</title>
+</head>
+<body>
+    <h1>Hello {{ .Name }}</h1>
+    <p>We have received your order.</p>
+    <p>Order ID: {{ .OrderID }}</p>
+    <p>Order Date: {{ .OrderDate }}</p>
+    <p>Pizza Base: {{ .PizzaBase }}   RM {{ .PizzaBasePrice }}</p>
+    <p>Pizza Toppings: {{ .PizzaToppings_Name_Price }}</p>
+    <p>Pizza Size: {{ .PizzaSize }}   x {{ .PizzaSizeMultiplier }}</p>
+    <br>
+    <p>Total Price: RM {{ .TotalPrice }}</p>
+</body>
+</html>

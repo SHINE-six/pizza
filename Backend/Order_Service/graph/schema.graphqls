@@ -1,0 +1,65 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Base @key(fields: "id") {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Size @key(fields: "id") {
+  id: ID!
+  name: String!
+  multiplier: Float!
+}
+
+type Topping @key(fields: "id") {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Pizza {
+  id: ID!
+  orderId: ID!
+  base: Base!
+  size: Size!
+  toppings: [Topping!]!
+  Price: Float!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Order {
+  id: ID!
+  deliveryStaff: DeliveryStaff
+  customer: Customer!
+  pizzas: [Pizza!]!
+  totalPrice: Float!
+  Status: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Customer {
+  id: ID!
+  email: String!
+  username: String!
+  password: String!
+}
+
+type DeliveryStaff {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  allOrders(status: String, deliveryStaffId: ID, customerId: ID, orderId: ID): [Order!]!
+}
+
+type Mutation {
+  createPizza(baseId: ID!, sizeId: ID!, toppingIds: [ID!]!, customerId: ID!): Pizza!
+  updateOrderStatus(orderId: ID!, status: String!, deliveryStaffId: ID): Order!
+}

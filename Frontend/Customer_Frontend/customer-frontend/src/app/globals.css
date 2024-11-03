@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --primary-light: #bebebe;
+  /* --primary: #8c8de6; */
+  --primary-dark: #313c5e;
+  --secondary-light: #a8dffd;
+  /* --secondary: #FFD700; */
+  --secondary-dark: #024575;
+  --tertiary-light: #7678d2;
+  /* --tertiary: #de1f12; */
+  --tertiary-dark: #352888;
+}
+
+:root {
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --tertiary: var(--tertiary-light);
+  --word: 0, 0, 0;
+  --inverse: 255, 255, 255;
+}
+
+
+[data-theme="dark"] {
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
+  --tertiary: var(--tertiary-dark);
+  --word: 255, 255, 255;
+  --inverse: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--word));
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--primary)
+  );
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.fillPage {
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem);
+}
+
+.backgroundImage {
+  position: relative;
+}
+
+.backgroundImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/pizza_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust the opacity as needed */
+  z-index: -1;
+}
+
+input {
+  border: 1px solid rgb(var(--word));
+  padding: 0.25rem;
+  border-radius: 2rem;
+  text-indent: 0.6rem;
+  color: rgb(0, 0, 0);
+}
+
+.primary-background {
+  background-color: var(--primary);
+}
+
+.tooltip {
+  position: relative;
+  display: block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--tertiary);
+  color: rgb(var(--word));
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.secondary-background {
+  background-color: var(--secondary);
+}
+
+.tertiary-background {
+  background-color: var(--tertiary);
+}

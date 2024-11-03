@@ -1,0 +1,28 @@
+type Base @key(fields: "id") {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Size @key(fields: "id") {
+  id: ID!
+  name: String!
+  multiplier: Float!
+}
+
+type Topping @key(fields: "id") {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type AvailablePizzaSelection {
+  bases: [Base!]!
+  sizes: [Size!]!
+  toppings: [Topping!]!
+}
+
+
+type Query {
+  AvailablePizzaSelection: AvailablePizzaSelection!
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order in Delivering</title>
+</head>
+<body>
+    <h1>Hello {{ .Name }}</h1>
+    <p>Your order is on the way.</p>
+    <p>Order ID: {{ .OrderID }}</p>
+    <br>
+    <p>You can track your order at the link below</p>
+    <a href="{{ .TrackingLink }}">Track Order</a>
+</body>
+</html>

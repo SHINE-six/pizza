@@ -1,0 +1,3 @@
+[submodule "proto"]
+	path = proto
+	url = https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/Proto_Repo
